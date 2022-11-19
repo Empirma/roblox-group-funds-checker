@@ -2,6 +2,8 @@
 
 Calculates all the group funds in the inserted cookies
 
+This shows groups owned by you only
+
 Doesn't support Proxies
 
 # How to use
