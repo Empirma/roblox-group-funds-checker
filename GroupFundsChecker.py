@@ -4,21 +4,22 @@ import time
 # Getting cookies
 cookiesFile = open("cookies.txt", "r")
 lnumber = 1
+
+# Going through cookies one by one
 for cookie in cookiesFile:
     # Setting cookie
     r = requests.Session()
     r.cookies[".ROBLOSECURITY"] = cookie.rstrip("\n")
 
     # Checking if cookie is valid
-    checkCookie = r.get("https://users.roblox.com/v1/users/authenticated")
-    if checkCookie.status_code == 401:
+    getUserInfo = r.get("https://users.roblox.com/v1/users/authenticated")
+    if getUserInfo.status_code == 401:
         print("Invalid cookie in line number:", lnumber)
         lnumber += 1
     else:
         lnumber += 1
         # Getting userid
-        getUserInfo = r.get("https://users.roblox.com/v1/users/authenticated").json()
-        userName, userID = getUserInfo['name'], getUserInfo['id']
+        userName, userID = getUserInfo.json()['name'], getUserInfo.json()['id']
         print("Username:", userName, "User ID:", userID); print("")
 
         # Getting groups
