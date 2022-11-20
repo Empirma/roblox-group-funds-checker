@@ -13,6 +13,7 @@ for cookie in cookiesFile:
     checkCookie = r.get("https://users.roblox.com/v1/users/authenticated")
     if checkCookie.status_code == 401:
         print("Invalid cookie in line number:", lnumber)
+        lnumber += 1
     else:
         lnumber += 1
         # Getting userid
